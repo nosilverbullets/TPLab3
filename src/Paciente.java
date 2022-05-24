@@ -1,6 +1,5 @@
 import java.util.ArrayList;
-
-public class Paciente extends Usuario{
+public class Paciente extends Usuario {
  String dni;
  String historiaClinica; // Ver de generar con DNI + Alfanum
  String obraSocial;
