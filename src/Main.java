@@ -3,14 +3,12 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        ArrayList<Profesional> listaMedicos = new ArrayList<>();
-        ArrayList<Paciente> listaPacientes = new ArrayList<>();
-        ArrayList<Enfermedad> listaEnfermedades = new ArrayList<>();
+        ArrayList<Usuario> listadoUsuarios = new ArrayList<>();
 
-        ArrayList<Sintoma> listaSintomas = new ArrayList<>();
-        crearSintomas(listaSintomas);
+        Admin admin = new Admin(UsuarioTipo.admin, "administrador@clinica-colon.com", "123456", "33898687", "Colon 4190", "Mar del Plata", "223456789");
 
-        mostrarLista(listaSintomas); // Muestra lista generica - Set: toString
+
+
 
         /* TODO Borrador -> Asignar un Control a cada dia del Tratamiento
         *
@@ -35,29 +33,6 @@ public class Main {
         System.out.println("Hello world!");
     }
 
-    public static void crearSintomas(ArrayList listaSintomas){
-        listaSintomas.add(new Sintoma("Tos"));
-        listaSintomas.add(new Sintoma("Mucosidad"));
-        listaSintomas.add(new Sintoma("Estornudo"));
-        listaSintomas.add(new Sintoma("Congestion nasal"));
-        listaSintomas.add(new Sintoma("Dolor de garganta"));
-        listaSintomas.add(new Sintoma("Dolor de oido"));
-        listaSintomas.add(new Sintoma("Fiebre"));
-        listaSintomas.add(new Sintoma("Dolor corporal"));
-        listaSintomas.add(new Sintoma("Dolor de cabeza"));
-        listaSintomas.add(new Sintoma("Dolor en rostro"));
-        listaSintomas.add(new Sintoma("Enrojecimiento de la piel"));
-        listaSintomas.add(new Sintoma("Inflamacion del area afectada"));
-        listaSintomas.add(new Sintoma("Ronquera"));
-        listaSintomas.add(new Sintoma("Dolor al orinar"));
-        listaSintomas.add(new Sintoma("Necesidad de orinar con frecuencia"));
-    }
-
-    public static void mostrarLista(ArrayList lista){
-        for (int i = 0; i < lista.size(); i++){
-            System.out.println(lista.get(i));
-        }
-    }
 
 
 
