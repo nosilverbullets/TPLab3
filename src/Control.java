@@ -1,46 +1,39 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-/// VA A TRABAJAR EN CONJUNTO CON UN REGISTRO.
 public class Control {
-    String nombre;
-    ArrayList<String> descripcion;
-    int duracionDias;
-    Registro[duraciondias] registroUsuario;
-    LocalDate fecha; // De aqui nace la creacion y arreglo de "Controles"
+    private String nombreDoctorResponsable;
+    public ArrayList<TareaControl> tareas;
+    private LocalDate fecha;
 
-    // Mati idea pasar a valores -1 los que no van
-    double temperatura;
-    boolean tomarMedicacion;
-    boolean tosPresente;
-    boolean presentaFiebre;
-    boolean dolorCorporal;
-    boolean enrojecimientoPiel;
-    boolean dolorCorporal;
-    boolean completodia;
 
- Seleccione metodos para el control custom:
-    Nombre: Controlpersonalizado.
-            mostrarlista de posibilidades{
-     presentaFiebre = true;
-     dolorCorporal = true;
-     tosPresente = true;
-
+    public Control() {
+        this.tareas = new ArrayList<>();
     }
 
-    usuario cuando entra:
-    ve todotrue;
-     Desea completar el control?
-    presenta fiebre:
-    "COmplete temperatura"
-    temperatura;
-     dolorcorporal:
-    si
-    String Dolorcorporal "si";
-    tospresente:
-    String dolorpresente "si";
+    public void setNombreDoctorResponsable(String nombreDoctorResponsable) {
+        this.nombreDoctorResponsable = nombreDoctorResponsable;
+    }
 
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
 
+    public LocalDate getFecha() {
+        return fecha;
+    }
 
+    public void agregarTarea(TareaControl tarea){
+        this.tareas.add(tarea);
+    }
 
+    @Override
+    public String toString() {
+        return "Control{" +
+                "Profesional: " + nombreDoctorResponsable +
+                " - Tareas: " + tareas +
+                " - Fecha: " + fecha +
+                '}';
+    }
 }

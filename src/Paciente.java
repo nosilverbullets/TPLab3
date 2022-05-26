@@ -1,30 +1,44 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Paciente extends Usuario {
-    private String historial;
-    private String enfermedad;
-    private Control controles;
-    private ArrayList<Registro> registroTratamiento;
+    public ArrayList<Control> listaControl;
+    private ListaEnfermedad enfermedad;
 
-    public Paciente(UsuarioTipo tipoUsuario, String email, String contrasena, String dni,
-                    String direccion, String localidad, String telefono, ListaEnfermedad enfermedad,Control esteControl) {
+    public Paciente(UsuarioTipo tipoUsuario, String email, String contrasena, String dni, String direccion, String localidad, String telefono, ListaEnfermedad enfermedad) {
         super(tipoUsuario, email, contrasena, dni, direccion, localidad, telefono);
-        this.enfermedad = "Undefined";
-        this.controles = esteControl;
+        this.listaControl = new ArrayList<>();
+        this.enfermedad = enfermedad;
     }
 
-
-    public void completarControl(){
-        // TODO Poder completar el control, las N veces que dure el control
+    public void verControles(){
+        for (Control c: listaControl){
+            System.out.println(c);
+        }
     }
 
-    public void editarControl(){
-        // TODO edita el "control" del dia actual
+    public Control getControlHoy(){
+        Control aux = null;
+        for (Control c: listaControl){
+            if (c.getFecha().equals(LocalDate.now())){
+                aux = c;
+            }
+        }
+        return aux;
     }
 
-    public void historialControl(){
-        // TODO Ver historial de controles / enfermedad
+    public void verControlHoy(){
+        for (Control c: listaControl){
+            if (c.getFecha().equals(LocalDate.now()))
+                System.out.println(c);
+        }
     }
+
+    public void agregarListaControl(Control control){
+        listaControl.add(control);
+    }
+
 
 
 }
