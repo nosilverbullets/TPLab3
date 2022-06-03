@@ -1,31 +1,31 @@
 import java.util.ArrayList;
 
-public class Profesional extends Usuario{
+public class Profesional extends Usuario implements CrearPlanControl {
     private String licencia;
-    private List<Control> listaControles;
-    private ArrayList<Paciente> listaPacientes; // Los pacientes asignados por Admin
+    private ArrayList<Paciente> listaPacientesActivos;
+    private ArrayList<Paciente> nuevosPacientes;
 
-    public Profesional(UsuarioTipo tipoUsuario, String email, String contrasena, String dni, String direccion,
-                       String localidad, String telefono, String licencia) {
-        super(tipoUsuario, email, contrasena, dni, direccion, localidad, telefono);
+    public Profesional(UsuarioTipo tipoUsuario, String email, String contrasena, String dni, String licencia) {
+        super(tipoUsuario, email, contrasena, dni);
         this.licencia = licencia;
-        this.listaPacientes = new ArrayList<>();
+        this.listaPacientesActivos = new ArrayList<>();
+        this.nuevosPacientes = new ArrayList<>();
     }
 
 
-    public void verListadoControles(){
-        // TODO Puede ver un listado de controles y elegir un plan para aplicar
+    ///FUNCION QUE CHECKEA SI NO COMPLETARON DATO AYER.
+    public void checkearInfoDiaAnterior(){
+        short contadorNoCompletados = 0;
+        for (Paciente x:listaPacientesActivos) {
+            Registro checkeoRegistro = x.registroTratamiento.get(x.registroTratamiento.size()-1);
+           if (!checkeoRegistro.completoRegistro){
+               System.out.println("No completo el registro el paciente: " + x.getEmail());
+               contadorNoCompletados++;
+            }
+        }
+        System.out.println("Un total de " + contadorNoCompletados + " NO completaron su registro diario");
     }
-    public boolean asignarControl(Paciente paciente){
-        // TODO Asigna un "Control" a un paciente
-        return true; // si fue asignado correctamente
-    }
-    public void verControlPaciente(){
-        // TODO Ver el estado del control del paciente
-    }
-    public void terminarControl(){
-        // TODO dar alta "logico", listaEnfermedad = ninguna
-    }
+
 
 
 }

@@ -1,46 +1,36 @@
+import java.awt.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 /// VA A TRABAJAR EN CONJUNTO CON UN REGISTRO.
-public class Control {
-    String nombre;
-    ArrayList<String> descripcion;
-    int duracionDias;
-    Registro[duraciondias] registroUsuario;
-    LocalDate fecha; // De aqui nace la creacion y arreglo de "Controles"
+public class Control{
+    private String nombreControl;
+    protected LinkedList<TareaControl> tareaControl;
 
-    // Mati idea pasar a valores -1 los que no van
-    double temperatura;
-    boolean tomarMedicacion;
-    boolean tosPresente;
-    boolean presentaFiebre;
-    boolean dolorCorporal;
-    boolean enrojecimientoPiel;
-    boolean dolorCorporal;
-    boolean completodia;
 
- Seleccione metodos para el control custom:
-    Nombre: Controlpersonalizado.
-            mostrarlista de posibilidades{
-     presentaFiebre = true;
-     dolorCorporal = true;
-     tosPresente = true;
-
+    public Control(String nombreControl) {
+        this.nombreControl = nombreControl;
+        this.tareaControl = new LinkedList<>();
+    }
+    public void agregarTareaControl(TareaControl tarea){
+        this.tareaControl.add(tarea);
     }
 
-    usuario cuando entra:
-    ve todotrue;
-     Desea completar el control?
-    presenta fiebre:
-    "COmplete temperatura"
-    temperatura;
-     dolorcorporal:
-    si
-    String Dolorcorporal "si";
-    tospresente:
-    String dolorpresente "si";
+    public String getNombreControl() {
+        return nombreControl;
+    }
 
+    public void setNombreControl(String nombreControl) {
+        this.nombreControl = nombreControl;
+    }
 
+    public LinkedList<TareaControl> getTareaControl() {
+        return tareaControl;
+    }
 
-
+    public void setTareaControl(LinkedList<TareaControl> tareaControl) {
+        this.tareaControl = tareaControl;
+    }
 }

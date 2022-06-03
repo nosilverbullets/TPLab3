@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-public class Admin extends Usuario{
+public class Admin extends Usuario implements CrearPlanControl{
 
-    public Admin(UsuarioTipo tipoUsuario, String email, String contrasena, String dni, String direccion, String localidad, String telefono) {
-        super(tipoUsuario, email, contrasena, dni, direccion, localidad, telefono);
+    public Admin(UsuarioTipo tipoUsuario, String email, String contrasena, String dni) {
+        super(tipoUsuario, email, contrasena, dni);
     }
 
     // CRUD Usuarios -> Solo en vista administrador

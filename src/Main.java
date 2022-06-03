@@ -5,8 +5,7 @@ public class Main {
 
         ArrayList<Usuario> listadoUsuarios = new ArrayList<>();
 
-        Admin admin = new Admin(UsuarioTipo.admin, "administrador@clinica-colon.com", "123456", "33898687", "Colon 4190", "Mar del Plata", "223456789");
-
+        Admin admin = new Admin(UsuarioTipo.ADMIN, "administrador@clinica-colon.com", "123456", "33898687");
 
 
 

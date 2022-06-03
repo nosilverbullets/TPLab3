@@ -1,8 +1,33 @@
 public class Registro {
 
-    private float temperatura;
+
     private String sintomasCompletados;
     boolean completoRegistro;
 
-    // FUNCION toString
+    public Registro() {
+        this.sintomasCompletados = "VACIO";
+        this.completoRegistro = false;
+    }
+
+    public Registro(String sintomasCompletados, boolean completoRegistro) {
+        this.sintomasCompletados = sintomasCompletados;
+        this.completoRegistro = completoRegistro;
+    }
+
+    public String getSintomasCompletados() {
+        return sintomasCompletados;
+    }
+
+    public void setSintomasCompletados(String sintomasCompletados) {
+        this.sintomasCompletados = sintomasCompletados;
+    }
+
+    public boolean isCompletoRegistro() {
+        return completoRegistro;
+    }
+
+    public void setCompletoRegistro(boolean completoRegistro) {
+        this.completoRegistro = completoRegistro;
+    }
+
 }
