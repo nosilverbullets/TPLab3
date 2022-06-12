@@ -1,32 +1,85 @@
 import java.util.ArrayList;
 
-public class Profesional extends Usuario{
-    private String licencia;
-    private ArrayList<Paciente> listaPacientes; // Los pacientes asignados por Admin
+public class Profesional extends Usuario {
+    private static int contadorid = 0;
+    private int id;
+    private int especialidad;
+    private int contadorOrdenesGeneradas = -1;
+    private ArrayList<Integer> listaPacientesNuevosID; // Los pacientes asignados por Admin
+    private ArrayList<Integer> listaPacientesEnTratamiendoID; // Los pacientes asignados por Admin
+    private boolean activo;
 
-    public Profesional(UsuarioTipo tipoUsuario, String email, String contrasena, String dni, String direccion, String localidad, String telefono, String licencia) {
-        super(tipoUsuario, email, contrasena, dni, direccion, localidad, telefono);
-        this.licencia = licencia;
-        this.listaPacientes = new ArrayList<>();
-    }
-
-    public void agregarPacienteToProfesional(Paciente paciente){
-        listaPacientes.add(paciente);
-    }
-
-    public void verListadoControles(){
-        // TODO Puede ver un listado de controles y elegir un plan para aplicar
-    }
-    public boolean asignarControl(Paciente paciente){
-        // TODO Asigna un "Control" a un paciente
-        return true; // si fue asignado correctamente
-    }
-    public void verControlPaciente(){
-        // TODO Ver el estado del control del paciente
-    }
-    public void terminarControl(){
-        // TODO dar alta "logico", listaEnfermedad = ninguna
+    public Profesional(String nombre, String email, String clave, String dni, int especialidadID) {
+        super(nombre, email, clave, dni);
+        this.tipoUsuario = TipoUsuario.profesional;
+        this.listaPacientesNuevosID = new ArrayList<>();
+        this.listaPacientesEnTratamiendoID = new ArrayList<>();
+        this.especialidad = especialidadID;
+        this.id = contadorid++;
+        this.activo = true;
     }
 
+    public int getContadorOrdenesGeneradas() {
+        return contadorOrdenesGeneradas;
+    }
 
+    public void setContadorOrdenesGeneradas() {
+        this.contadorOrdenesGeneradas ++;
+    }
+
+    public int getID() {
+        return id;
+    }
+
+    public boolean estaActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean estado) {
+        this.activo = estado;
+    }
+
+    public String estadoActivo(){
+        if (this.activo){
+            return "Activo";
+        }else{
+            return "Inactivo";
+        }
+    }
+
+    public int getEspecialidad() {
+        return especialidad;
+    }
+
+    public void agregarPacientesProfesionalID(Integer id) {
+        this.listaPacientesNuevosID.add(id);
+    }
+
+    public ArrayList<Integer> getListaPacientesNuevosID() {
+        return listaPacientesNuevosID;
+    }
+
+    public void borrarPacienteNuevoID(int idPaciente){
+        listaPacientesNuevosID.remove(idPaciente);
+    }
+
+    public ArrayList<Integer> getListaPacientesEnTratamiendoID() {
+        return listaPacientesEnTratamiendoID;
+    }
+
+    public void agregarListaPacientesEnTratamiendoID(Integer idPaciente) {
+        this.listaPacientesEnTratamiendoID.add(idPaciente);
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "\nID [" + id + "] " + nombre +
+                "\nEspecialidad: " + especialidad +
+                "\nPacientes: " + listaPacientesNuevosID +
+                "\nEstado: " + estadoActivo() +
+                "\nCorreo: " + email +
+                "\nDNI: " + dni;
+    }
 }

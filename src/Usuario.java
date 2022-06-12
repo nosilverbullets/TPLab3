@@ -1,14 +1,45 @@
-public abstract class Usuario {
-    protected UsuarioTipo tipoUsuario;
+public class Usuario {
+    protected String nombre;
+    protected TipoUsuario tipoUsuario;
     protected String email;
-    protected String contrasena;
+    protected String clave;
     protected String dni;
 
-
-    public Usuario(UsuarioTipo tipoUsuario, String email, String contrasena, String dni, String direccion, String localidad, String telefono) {
-        this.tipoUsuario = tipoUsuario;
+    public Usuario(String nombre, String email, String clave, String dni) {
+        this.nombre = nombre;
         this.email = email;
-        this.contrasena = contrasena;
+        this.clave = clave;
         this.dni = dni;
+    }
+
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombre='" + nombre + '\'' +
+                ", tipoUsuario=" + tipoUsuario +
+                ", email='" + email + '\'' +
+                ", clave='" + clave + '\'' +
+                ", dni='" + dni + '\'' +
+                '}';
     }
 }

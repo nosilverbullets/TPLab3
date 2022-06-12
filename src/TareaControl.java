@@ -1,9 +1,13 @@
 public class TareaControl {
+    private static int contadorid = 0;
+    private int id;
     private String nombre;
     private String respuesta;
 
     public TareaControl(String nombre) {
         this.nombre = nombre;
+        this.id = contadorid++;
+        this.respuesta = null;
     }
 
     public String getNombre() {
@@ -18,8 +22,12 @@ public class TareaControl {
         return respuesta;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
-        return "Tarea: " + nombre;
+        return "Tarea [" + id + "] " + nombre ;
     }
 }

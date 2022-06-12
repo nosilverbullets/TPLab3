@@ -1,27 +1,18 @@
-import java.util.ArrayList;
-
 public class Admin extends Usuario{
 
-    public Admin(UsuarioTipo tipoUsuario, String email, String contrasena, String dni, String direccion, String localidad, String telefono) {
-        super(tipoUsuario, email, contrasena, dni, direccion, localidad, telefono);
+    public Admin(String nombre, String email, String clave, String dni) {
+        super(nombre, email, clave, dni);
+        this.tipoUsuario = TipoUsuario.admin;
     }
 
-    // CRUD Usuarios -> Solo en vista administrador
-    public void crearUser(){
-        // TODO Crea paciente o profesional
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "nombre='" + nombre + '\'' +
+                ", tipoUsuario=" + tipoUsuario +
+                ", email='" + email + '\'' +
+                ", clave='" + clave + '\'' +
+                ", dni='" + dni + '\'' +
+                '}';
     }
-    public void buscarUser(){
-        // TODO Busca paciente o profesional
-    }
-    public void modificarUser(){
-        // TODO Modifica paciente o profesional
-    }
-    public void borrarUser(){
-        // TODO Borra paciente o profesional
-    }
-
-    // CRUD Enfermedades y Tareas control
-
-
-
 }
