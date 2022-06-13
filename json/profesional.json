@@ -1,0 +1,74 @@
+[
+  {
+    "contadorid": 5,
+    "id": 0,
+    "especialidad": 0,
+    "contadorOrdenesGeneradas": -1,
+    "listaPacientesNuevosID": [
+      0
+    ],
+    "listaPacientesEnTratamiendoID": [],
+    "activo": true,
+    "nombre": "Doctor Bianchi",
+    "tipoUsuario": "profesional",
+    "email": "profesional",
+    "clave": "123456",
+    "dni": "20123456"
+  },
+  {
+    "contadorid": 5,
+    "id": 1,
+    "especialidad": 1,
+    "contadorOrdenesGeneradas": -1,
+    "listaPacientesNuevosID": [],
+    "listaPacientesEnTratamiendoID": [],
+    "activo": true,
+    "nombre": "Doctora Gimenez",
+    "tipoUsuario": "profesional",
+    "email": "profesional2",
+    "clave": "123456",
+    "dni": "10123456"
+  },
+  {
+    "contadorid": 5,
+    "id": 2,
+    "especialidad": 2,
+    "contadorOrdenesGeneradas": -1,
+    "listaPacientesNuevosID": [],
+    "listaPacientesEnTratamiendoID": [],
+    "activo": true,
+    "nombre": "Doctora Ullua",
+    "tipoUsuario": "profesional",
+    "email": "profesional3",
+    "clave": "123456",
+    "dni": "30123456"
+  },
+  {
+    "contadorid": 5,
+    "id": 3,
+    "especialidad": 3,
+    "contadorOrdenesGeneradas": -1,
+    "listaPacientesNuevosID": [],
+    "listaPacientesEnTratamiendoID": [],
+    "activo": true,
+    "nombre": "Doctor Pettinato",
+    "tipoUsuario": "profesional",
+    "email": "profesional4",
+    "clave": "123456",
+    "dni": "25123456"
+  },
+  {
+    "contadorid": 5,
+    "id": 4,
+    "especialidad": 4,
+    "contadorOrdenesGeneradas": -1,
+    "listaPacientesNuevosID": [],
+    "listaPacientesEnTratamiendoID": [],
+    "activo": true,
+    "nombre": "Doctor Gaggini",
+    "tipoUsuario": "profesional",
+    "email": "profesional5",
+    "clave": "123456",
+    "dni": "29123456"
+  }
+]

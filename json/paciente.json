@@ -1,0 +1,62 @@
+[
+  {
+    "contadorid": 5,
+    "id": 0,
+    "especialidadID": 0,
+    "activo": true,
+    "listaOrdenes": [],
+    "nombre": "Paciente Silvia",
+    "tipoUsuario": "paciente",
+    "email": "paciente",
+    "clave": "123456",
+    "dni": "26456789"
+  },
+  {
+    "contadorid": 5,
+    "id": 1,
+    "especialidadID": 1,
+    "activo": true,
+    "listaOrdenes": [],
+    "nombre": "Paciente Carlos",
+    "tipoUsuario": "paciente",
+    "email": "paciente2",
+    "clave": "123456",
+    "dni": "26456789"
+  },
+  {
+    "contadorid": 5,
+    "id": 2,
+    "especialidadID": 2,
+    "activo": true,
+    "listaOrdenes": [],
+    "nombre": "Paciente Romina",
+    "tipoUsuario": "paciente",
+    "email": "paciente3",
+    "clave": "123456",
+    "dni": "26456789"
+  },
+  {
+    "contadorid": 5,
+    "id": 3,
+    "especialidadID": 3,
+    "activo": true,
+    "listaOrdenes": [],
+    "nombre": "Paciente Juan",
+    "tipoUsuario": "paciente",
+    "email": "paciente4",
+    "clave": "123456",
+    "dni": "26456789"
+  },
+  {
+    "contadorid": 5,
+    "id": 4,
+    "especialidadID": 4,
+    "activo": true,
+    "listaOrdenes": [],
+    "nombre": "Paciente Carla",
+    "tipoUsuario": "paciente",
+    "email": "paciente5",
+    "clave": "123456",
+    "dni": "26456789"
+  }
+]

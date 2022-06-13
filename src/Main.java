@@ -6,14 +6,49 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        //TODO Json Localdate [Solucionado]
+        //TODO [Solucionado] Static no lo toma gson -> ID AUTO ++
+        //TODO Lista: Tarea, Control, Enfermedad, Especialidad: [Solucionado]
+        //TODO Lista: Usuarios [Solucionado] Se genera una lista por tipo, se persiste y luego se unifica
+        //TODO Evaluar funcionalidades
         //TODO Cambiar mails por defecto
+        //TODO Evaluar implementacion gson en clases con https://www.jsonlint.com/
+
 
         Sistema clinica = new Sistema();
-        clinica.generarDatosDefault(); // Carga valores por defecto
+        //clinica.generarDatosDefault(); // Carga valores por defecto
+
+        //clinica.separarUsuarios(); // Divide la lista de usuarios para serializar por separado
+
+        //clinica.actualizarAdmin();
+        //clinica.actualizarPaciente();
+        //clinica.actualizarProfesional();
+
+
+
+        //clinica.actualizarUsuarios(); -> NO USAR
+        //clinica.actualizarControl();
+        //clinica.actualizarTarea();
+        //clinica.actualizarEspecialidad();
+        //clinica.actualizarEnfermedad();
+
+        //clinica.cargarUsuarios(); -> NO USAR
+        clinica.cargarControl();
+        clinica.cargarTarea();
+        clinica.cargarEspecialidad();
+        clinica.cargarEnfermedad();
+
+        clinica.cargarAdmin();
+        clinica.cargarPaciente();
+        clinica.cargarProfesional();
+
+        clinica.unificarUsuarios();
+
         login(clinica);
     }
 
     // -----------------------------------------------------------------------------------------
+
     public static void login(Sistema clinica) {
         Usuario user;
         do {
@@ -145,6 +180,7 @@ public class Main {
                     String tarea = scan.nextLine();
                     if (!estaVacio(tarea) && clinica.agregarTarea(tarea)) {
                         System.out.println("Tarea agregada: " + tarea);
+                        clinica.actualizarTarea(); // TODO Testing
                     } else {
                         System.out.println("Tarea duplicada o error al cargar");
                     }
@@ -167,6 +203,7 @@ public class Main {
                     } while (continua);
                     if (clinica.borrarTareaID(id)) {
                         System.out.println("Elemento borrado con exito");
+                        clinica.actualizarTarea(); // TODO Testing
                     } else {
                         System.out.println("ID incorrecto o no se pudo borrar el elemento");
                     }
@@ -826,12 +863,11 @@ public class Main {
                                     boolean existeTarea = false;
                                     for (Integer c: tareas){
                                         if (c.equals(idTarea)){
-                                            existeTarea = true; // TODO Probar antes
+                                            existeTarea = true;
                                         }
                                     }
                                     if (!existeTarea && clinica.buscarTarea(idTarea)){
-                                        tareas.add(scan.nextInt());
-                                        System.out.println("\nTarea agregada con exito!");
+                                        tareas.add(idTarea);
                                     }else{
                                         System.out.println("\nTarea repetida");
                                     }

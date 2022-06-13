@@ -5,7 +5,7 @@ public class Enfermedad {
 
     public Enfermedad(String nombre) {
         this.nombre = nombre;
-        this.id = contadorid++;
+        this.id = contadorid ++;
     }
     public String getNombre() {
         return nombre;

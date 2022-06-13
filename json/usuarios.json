@@ -1,0 +1,131 @@
+[
+  {
+    "nombre": "Juan Administrador",
+    "tipoUsuario": "admin",
+    "email": "admin",
+    "clave": "123456",
+    "dni": "38001002"
+  },
+  {
+    "id": 0,
+    "especialidad": 0,
+    "contadorOrdenesGeneradas": -1,
+    "listaPacientesNuevosID": [
+      0
+    ],
+    "listaPacientesEnTratamiendoID": [],
+    "activo": true,
+    "nombre": "Doctor Bianchi",
+    "tipoUsuario": "profesional",
+    "email": "profesional",
+    "clave": "123456",
+    "dni": "20123456"
+  },
+  {
+    "id": 1,
+    "especialidad": 1,
+    "contadorOrdenesGeneradas": -1,
+    "listaPacientesNuevosID": [],
+    "listaPacientesEnTratamiendoID": [],
+    "activo": true,
+    "nombre": "Doctora Gimenez",
+    "tipoUsuario": "profesional",
+    "email": "profesional2",
+    "clave": "123456",
+    "dni": "10123456"
+  },
+  {
+    "id": 2,
+    "especialidad": 2,
+    "contadorOrdenesGeneradas": -1,
+    "listaPacientesNuevosID": [],
+    "listaPacientesEnTratamiendoID": [],
+    "activo": true,
+    "nombre": "Doctora Ullua",
+    "tipoUsuario": "profesional",
+    "email": "profesional3",
+    "clave": "123456",
+    "dni": "30123456"
+  },
+  {
+    "id": 3,
+    "especialidad": 3,
+    "contadorOrdenesGeneradas": -1,
+    "listaPacientesNuevosID": [],
+    "listaPacientesEnTratamiendoID": [],
+    "activo": true,
+    "nombre": "Doctor Pettinato",
+    "tipoUsuario": "profesional",
+    "email": "profesional4",
+    "clave": "123456",
+    "dni": "25123456"
+  },
+  {
+    "id": 4,
+    "especialidad": 4,
+    "contadorOrdenesGeneradas": -1,
+    "listaPacientesNuevosID": [],
+    "listaPacientesEnTratamiendoID": [],
+    "activo": true,
+    "nombre": "Doctor Gaggini",
+    "tipoUsuario": "profesional",
+    "email": "profesional5",
+    "clave": "123456",
+    "dni": "29123456"
+  },
+  {
+    "id": 0,
+    "especialidadID": 0,
+    "activo": true,
+    "listaOrdenes": [],
+    "nombre": "Paciente Silvia",
+    "tipoUsuario": "paciente",
+    "email": "paciente",
+    "clave": "123456",
+    "dni": "26456789"
+  },
+  {
+    "id": 1,
+    "especialidadID": 1,
+    "activo": true,
+    "listaOrdenes": [],
+    "nombre": "Paciente Carlos",
+    "tipoUsuario": "paciente",
+    "email": "paciente2",
+    "clave": "123456",
+    "dni": "26456789"
+  },
+  {
+    "id": 2,
+    "especialidadID": 2,
+    "activo": true,
+    "listaOrdenes": [],
+    "nombre": "Paciente Romina",
+    "tipoUsuario": "paciente",
+    "email": "paciente3",
+    "clave": "123456",
+    "dni": "26456789"
+  },
+  {
+    "id": 3,
+    "especialidadID": 3,
+    "activo": true,
+    "listaOrdenes": [],
+    "nombre": "Paciente Juan",
+    "tipoUsuario": "paciente",
+    "email": "paciente4",
+    "clave": "123456",
+    "dni": "26456789"
+  },
+  {
+    "id": 4,
+    "especialidadID": 4,
+    "activo": true,
+    "listaOrdenes": [],
+    "nombre": "Paciente Carla",
+    "tipoUsuario": "paciente",
+    "email": "paciente5",
+    "clave": "123456",
+    "dni": "26456789"
+  }
+]

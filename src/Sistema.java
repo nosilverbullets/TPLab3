@@ -1,8 +1,18 @@
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.*;
+import java.lang.reflect.Type;
+import java.lang.reflect.Modifier;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+
 public class Sistema {
     ArrayList<Usuario> listadoUsuario;
+    ArrayList<Admin> listadoAdmin;
+    ArrayList<Paciente> listadoPaciente;
+    ArrayList<Profesional> listadoProfesional;
     ArrayList<TareaControl> listadoTarea;
     ArrayList<Control> listadoControl;
     ArrayList<Enfermedad> listadoEnfermedad;
@@ -11,6 +21,9 @@ public class Sistema {
 
     public Sistema() {
         this.listadoUsuario = new ArrayList<>();
+        this.listadoAdmin = new ArrayList<>();
+        this.listadoPaciente = new ArrayList<>();
+        this.listadoProfesional = new ArrayList<>();
         this.listadoTarea = new ArrayList<>();
         this.listadoControl = new ArrayList<>();
         this.listadoEnfermedad = new ArrayList<>();
@@ -89,6 +102,389 @@ public class Sistema {
         listadoUsuario.add(new Paciente("Paciente Carla", "paciente5", "123456", "26456789", 4));
 
     }
+
+    public void separarUsuarios(){
+        for(Usuario c: listadoUsuario){
+            TipoUsuario tipo = c.getTipoUsuario();
+            switch (tipo){
+                case profesional -> listadoProfesional.add((Profesional) c);
+                case paciente -> listadoPaciente.add((Paciente) c);
+                case admin -> listadoAdmin.add((Admin) c);
+            }
+        }
+    }
+
+    public void unificarUsuarios(){
+        listadoUsuario.clear();
+        for(Admin c: listadoAdmin){
+            listadoUsuario.add(c);
+        }
+        for(Paciente c: listadoPaciente){
+            listadoUsuario.add(c);
+        }
+        for(Profesional c: listadoProfesional){
+            listadoUsuario.add(c);
+        }
+    }
+
+    public void cargarAdmin(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+        gsonBuilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+
+        File file = new File(path + "admin.json"); // <- MOD. HERE
+        try {
+            Type listType = new TypeToken<ArrayList<Admin>>(){}.getType(); // <- MOD. HERE
+            //Deserializo
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            listadoAdmin = gson.fromJson(bufferedReader, listType); // <- MOD. HERE
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+        }
+    }
+    public void actualizarAdmin(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+        gsonBuilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+
+        File file = new File(path + "admin.json"); // <- MOD. HERE
+        try {
+            //Serializo
+            Type listType = new TypeToken<ArrayList<Admin>>(){}.getType(); // <- MOD. HERE
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            gson.toJson(listadoAdmin, listType, bufferedWriter); // <- MOD. HERE
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+        }
+    }
+    public void cargarPaciente(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+        gsonBuilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+
+        File file = new File(path + "paciente.json"); // <- MOD. HERE
+        try {
+            Type listType = new TypeToken<ArrayList<Paciente>>(){}.getType(); // <- MOD. HERE
+            //Deserializo
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            listadoPaciente = gson.fromJson(bufferedReader, listType); // <- MOD. HERE
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+        }
+    }
+    public void actualizarPaciente(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+        gsonBuilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+
+        File file = new File(path + "paciente.json"); // <- MOD. HERE
+        try {
+            //Serializo
+            Type listType = new TypeToken<ArrayList<Paciente>>(){}.getType(); // <- MOD. HERE
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            gson.toJson(listadoPaciente, listType, bufferedWriter); // <- MOD. HERE
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+        }
+    }
+    public void cargarProfesional(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+        gsonBuilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+
+        File file = new File(path + "profesional.json"); // <- MOD. HERE
+        try {
+            Type listType = new TypeToken<ArrayList<Profesional>>(){}.getType(); // <- MOD. HERE
+            //Deserializo
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            listadoProfesional = gson.fromJson(bufferedReader, listType); // <- MOD. HERE
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+        }
+    }
+    public void actualizarProfesional(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+        gsonBuilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+
+        File file = new File(path + "profesional.json"); // <- MOD. HERE
+        try {
+            //Serializo
+            Type listType = new TypeToken<ArrayList<Profesional>>(){}.getType(); // <- MOD. HERE
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            gson.toJson(listadoProfesional, listType, bufferedWriter); // <- MOD. HERE
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+        }
+    }
+    public void cargarUsuarios(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+        gsonBuilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+
+        File file = new File(path + "usuarios.json"); // <- MOD. HERE
+        try {
+            Type listType = new TypeToken<ArrayList<Usuario>>(){}.getType(); // <- MOD. HERE
+            //Deserializo
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            listadoUsuario = gson.fromJson(bufferedReader, listType); // <- MOD. HERE
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("Carganddo: Usuarios");
+        }
+    }
+    public void actualizarUsuarios(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
+        gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+        gsonBuilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+
+        File file = new File(path + "usuarios.json"); // <- MOD. HERE
+        try {
+            //Serializo
+            Type listType = new TypeToken<ArrayList<Usuario>>(){}.getType(); // <- MOD. HERE
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            gson.toJson(listadoUsuario, listType, bufferedWriter); // <- MOD. HERE
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+        }
+    }
+    public void cargarTarea(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBilder = new GsonBuilder();
+        gsonBilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        //gsonBilder.excludeFieldsWithModifiers(Modifier.STATIC); // Fails
+        Gson gson = gsonBilder.create();
+
+        File file = new File(path + "tareas.json"); // <- MOD. HERE
+        try {
+            Type listType = new TypeToken<ArrayList<TareaControl>>(){}.getType(); // <- MOD. HERE
+
+            //Deserializo
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            listadoTarea = gson.fromJson(bufferedReader, listType); // <- MOD. HERE
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+
+        }
+    }
+    public void actualizarTarea(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBilder = new GsonBuilder();
+        gsonBilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT);
+        //gsonBilder.excludeFieldsWithModifiers(Modifier.STATIC); // Todo probar
+        Gson gson = gsonBilder.create();
+
+        File file = new File(path + "tareas.json"); // <- MOD. HERE
+        try {
+            //Serializo
+            Type listType = new TypeToken<ArrayList<TareaControl>>(){}.getType(); // <- MOD. HERE
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            gson.toJson(listadoTarea, listType, bufferedWriter); // <- MOD. HERE
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+
+        }
+    }
+    public void cargarControl(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBilder = new GsonBuilder();
+        gsonBilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBilder.create();
+
+        File file = new File(path + "controles.json"); // <- MOD. HERE
+        try {
+            //Serializo
+            Type listType = new TypeToken<ArrayList<Control>>(){}.getType(); // <- MOD. HERE
+            //Deserializo
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            listadoControl = gson.fromJson(bufferedReader, listType); // <- MOD. HERE
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+
+        }
+    }
+    public void actualizarControl(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBilder = new GsonBuilder();
+        gsonBilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBilder.create();
+
+        File file = new File(path + "controles.json"); // <- MOD. HERE
+        try {
+            //Serializo
+            Type listType = new TypeToken<ArrayList<Control>>(){}.getType(); // <- MOD. HERE
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            gson.toJson(listadoControl, listType, bufferedWriter); // <- MOD. HERE
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+
+        }
+    }
+    public void cargarEnfermedad(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBilder = new GsonBuilder();
+        gsonBilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBilder.create();
+
+        File file = new File(path + "enfermedades.json"); // <- MOD. HERE
+        try {
+            //Serializo
+            Type listType = new TypeToken<ArrayList<Enfermedad>>(){}.getType(); // <- MOD. HERE
+            //Deserializo
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            listadoEnfermedad = gson.fromJson(bufferedReader, listType); // <- MOD. HERE
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+
+        }
+    }
+    public void actualizarEnfermedad(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBilder = new GsonBuilder();
+        gsonBilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBilder.create();
+
+        File file = new File(path + "enfermedades.json"); // <- MOD. HERE
+        try {
+            //Serializo
+            Type listType = new TypeToken<ArrayList<Enfermedad>>(){}.getType(); // <- MOD. HERE
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            gson.toJson(listadoEnfermedad, listType, bufferedWriter); // <- MOD. HERE
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+
+        }
+    }
+    public void cargarEspecialidad(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBilder = new GsonBuilder();
+        gsonBilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBilder.create();
+
+        File file = new File(path + "especialidades.json"); // <- MOD. HERE
+        try {
+            Type listType = new TypeToken<ArrayList<Especialidad>>(){}.getType(); // <- MOD. HERE
+            //Deserializo
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            listadoEspecialidad = gson.fromJson(bufferedReader, listType); // <- MOD. HERE
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+
+        }
+    }
+    public void actualizarEspecialidad(){
+        String path = "C:\\Users\\The PC\\Desktop\\TPLab3\\json\\";
+
+        GsonBuilder gsonBilder = new GsonBuilder();
+        gsonBilder.excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT); // OK
+        Gson gson = gsonBilder.create();
+
+        File file = new File(path + "especialidades.json"); // <- MOD. HERE
+        try {
+            //Serializo
+            Type listType = new TypeToken<ArrayList<Especialidad>>(){}.getType(); // <- MOD. HERE
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            gson.toJson(listadoEspecialidad, listType, bufferedWriter); // <- MOD. HERE
+            bufferedWriter.close();
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+        finally {
+
+        }
+    }
     // Retorna el usuario si el login es valido
     public Usuario login(String email, String clave){
         for (Usuario c: listadoUsuario){
@@ -104,6 +500,15 @@ public class Sistema {
             System.out.println(c);
         }
     }
+
+    public int contadorTareasControl(){
+        int i = -1;
+        for (TareaControl c: listadoTarea){
+            i++;
+        }
+        return i;
+    }
+
     // Si tarea ya existe no se agrega
     public boolean agregarTarea(String tarea){
         for (TareaControl c: listadoTarea){
@@ -112,6 +517,7 @@ public class Sistema {
             }
         }
         this.listadoTarea.add(new TareaControl(tarea));
+        // TODO ACTUALIZAR ACA
         return true;
     }
     public boolean borrarTareaID(int id){
@@ -119,6 +525,7 @@ public class Sistema {
         for (TareaControl c: listadoTarea){
             if (c.getId() == id){
                 this.listadoTarea.remove(c);
+                // actualizarTarea();
                 aux = true;
             }
         }
@@ -164,12 +571,14 @@ public class Sistema {
             }
         }
         this.listadoEnfermedad.add(new Enfermedad(enfermedad));
+        actualizarEnfermedad(); //todo test ok?
         return true;
     }
     public boolean borrarEnfermedadID(int id){
         for (Enfermedad c: listadoEnfermedad){
             if (c.getId() == id){
                 this.listadoEnfermedad.remove(c);
+                // actualizarEnfermedad();
                 return true;
             }
         }
@@ -204,12 +613,14 @@ public class Sistema {
             }
         }
         this.listadoEspecialidad.add(new Especialidad(especialidad));
+        actualizarEspecialidad(); //TODO TEST?
         return true;
     }
     public boolean borrarEspecialidadID(int id){
         for (Especialidad c: listadoEspecialidad){
             if (c.getId() == id){
                 this.listadoEspecialidad.remove(c);
+                // ualizarEspecialidad();
                 return true;
             }
         }
@@ -263,6 +674,7 @@ public class Sistema {
             }
         }
         this.listadoUsuario.add(profesional);
+        // actualizarUsuarios();
         return true;
     } // Agrega profesional si su DNI no existe en la lista
     public boolean borrarProfesionalID(int id){
@@ -272,6 +684,7 @@ public class Sistema {
                 if (((Profesional) c).getID() == id){
                     System.out.println(c.getNombre());
                     ((Profesional) c).setActivo(!((Profesional) c).estaActivo());
+                    // actualizarUsuarios();
                     return true;
                 }
             }
@@ -314,6 +727,7 @@ public class Sistema {
             }
         }
         this.listadoUsuario.add(paciente);
+        // actualizarUsuarios();
         return true;
     }
     // Agrega un paciente a un profesional
@@ -323,6 +737,7 @@ public class Sistema {
             if(c.getTipoUsuario().equals(TipoUsuario.profesional)){
                 if (((Profesional)c).getID() == idProfesional){
                     ((Profesional) c).agregarPacientesProfesionalID(paciente.getID());
+                    // actualizarUsuarios();
                     estado = true;
                 }
             }
@@ -335,6 +750,7 @@ public class Sistema {
                 if (((Paciente) c).getID() == id){
                     System.out.println(c.getNombre());
                     ((Paciente) c).setActivo(!((Paciente) c).estaActivo());
+                    // actualizarUsuarios();
                     return true;
                 }
             }
@@ -404,7 +820,7 @@ public class Sistema {
                         // Paciente: lista sin atender -> lista en tratamiento
                         ((Profesional)profesional).agregarListaPacientesEnTratamiendoID(idPaciente);
                         ((Profesional) profesional).borrarPacienteNuevoID(idPaciente);
-                        System.out.println("\nTratamiento cargado con exito ");
+                        // actualizarUsuarios();
                     }
                 }
             }
@@ -433,6 +849,7 @@ public class Sistema {
                     // Paciente: lista sin atender -> lista en tratamiento
                     ((Profesional)profesional).agregarListaPacientesEnTratamiendoID(idPaciente);
                     ((Profesional) profesional).borrarPacienteNuevoID(idPaciente);
+                    // actualizarUsuarios();
                     System.out.println("\nTratamiento cargado con exito ");
                 }
             }

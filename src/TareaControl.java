@@ -6,7 +6,7 @@ public class TareaControl {
 
     public TareaControl(String nombre) {
         this.nombre = nombre;
-        this.id = contadorid++;
+        this.id = contadorid ++;
         this.respuesta = null;
     }
 

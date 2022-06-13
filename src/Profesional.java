@@ -4,9 +4,9 @@ public class Profesional extends Usuario {
     private static int contadorid = 0;
     private int id;
     private int especialidad;
-    private int contadorOrdenesGeneradas = -1;
+    private int contadorOrdenesGeneradas = -1; // Asigna un valor a cada tratamiento facilitando el alta del paciente
     private ArrayList<Integer> listaPacientesNuevosID; // Los pacientes asignados por Admin
-    private ArrayList<Integer> listaPacientesEnTratamiendoID; // Los pacientes asignados por Admin
+    private ArrayList<Integer> listaPacientesEnTratamiendoID; // Los pacientes en tratamiento
     private boolean activo;
 
     public Profesional(String nombre, String email, String clave, String dni, int especialidadID) {
